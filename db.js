@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const mongoURI = "mongodb://localhost:27017/iNotebook" 
+const mongoURI = process.env.MONGO_URI;
 
 const connectToMongo = () => {
-    mongoose.connect(mongoURI)
-        .then(() => console.log('Connected to MongoDB successfully!'))
-        .catch((err) => console.error('MongoDB connection error:', err));
+    mongoose.connect(mongoURI)  // Remove options object here
+        .then(() => console.log('✅ Connected to MongoDB Atlas successfully!'))
+        .catch((err) => console.error('❌ MongoDB connection error:', err));
 };
 
 module.exports = connectToMongo;
