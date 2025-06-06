@@ -1,20 +1,20 @@
 const connectToMongo = require('./db');
 const express = require('express');
 const cors = require('cors');
+
+// Connect to MongoDB
 connectToMongo();
 
 const app = express();
 const port = 3000;
 
-//This is the middleware
 app.use(express.json());
 app.use(cors());
 
-// Available Routes
-app.use('/api/Auth', require('./Routes/Auth'));
+// Routes
+app.use('/api/auth', require('./Routes/Auth'));
 app.use('/api/notes', require('./Routes/Routesnotes'));
 
-
 app.listen(port, () => {
-    console.log(`iNoteBook backened is running at http://localhost:${port}`);
+    console.log(`✅ iNotebook backend is running at http://localhost:${port}`);
 });
